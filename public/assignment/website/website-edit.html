@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
     <title>Website-edit</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
@@ -74,15 +75,19 @@
     </div>
 
     <div class="col-sm-8">
+
         <label for="website-name">Name</label>
         <input class="form-control" id="website-name" placeholder="Website Name" type="text"/>
+        <div class="form-group">
 
         <label for="website-new-description">Description</label>
-        <textarea class="form-control" placeholder="Description" id="website-new-description"></textarea>
+        <textarea class="form-control" placeholder="Description" id="website-new-description" rows="4"></textarea>
+        </div>
 
         <a class="btn btn-danger btn-block" href="website-list.html">
             Delete
         </a>
+
     </div>
 
 </div>
