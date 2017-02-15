@@ -62,6 +62,7 @@
                     users[u].firstName = newUser.firstName;
                     users[u].lastName = newUser.lastName;
                     users[u].username = newUser.username;
+                    users[u].email = newUser.email;
                     return user;
                 }
             }
