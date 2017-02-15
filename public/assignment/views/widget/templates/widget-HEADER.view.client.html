@@ -32,13 +32,19 @@
            value="How an Interstellar Starship Could Actually Explore Alpha Centauri"
            id="widget-heading-widget-title" type="text"></input>
 
-    <label for="widget-heading-widget-size">Size</label>
-    <input class="form-control"
-           ng-model="model.widget.size"
-           value="3"
-           id="widget-heading-widget-size"
-           type="text"></input>
-
+    <div class="form-group">
+        <label for="widget-heading-widget-size">Size</label>
+        <select class="form-control"
+                ng-model="model.widget.size"
+                id="widget-heading-widget-size">
+            <option >1</option>
+            <option >2</option>
+            <option >3</option>
+            <option >4</option>
+            <option >5</option>
+            <option >6</option>
+        </select>
+    </div>
 
     <a class="btn btn-danger btn-block" ng-click="model.deleteWidget()">
         Delete

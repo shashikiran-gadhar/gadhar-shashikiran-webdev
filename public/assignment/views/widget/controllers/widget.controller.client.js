@@ -51,7 +51,7 @@
         init();
 
         function newHeaderWidget() {
-            var headerWidget ={"widgetType": "HEADER", "size": 2, "text": "GIZMODO"};
+            var headerWidget ={"widgetType": "HEADER", "size": "2", "text": "GIZMODO"};
             WidgetService.createWidget(vm.pageID, headerWidget);
             $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page/" + vm.pageID + "/widget");
 
