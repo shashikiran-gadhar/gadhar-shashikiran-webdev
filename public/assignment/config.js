@@ -70,6 +70,6 @@
                 controller: "EditWidgetController",
                 controllerAs: "model"
             });
-
     }
+
 })();
