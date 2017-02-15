@@ -43,7 +43,6 @@
                     return angular.copy(users[i]);
             }
             return null;
-
         }
 
         function findUserByCredentials(username, password) {

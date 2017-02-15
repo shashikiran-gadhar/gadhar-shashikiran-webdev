@@ -57,7 +57,6 @@
                 }
             }
             return null;
-
         }
 
         function deleteWebsite(websiteId) {
