@@ -21,7 +21,6 @@
            else{
                vm.error = "User not found";
            }
-
         }
     }
 

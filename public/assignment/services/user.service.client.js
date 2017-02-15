@@ -22,14 +22,27 @@
         return api;
         
         function createUser(user) {
-            
+            user._id = (new Date()).getTime();
+            users.push(user);
+            return user;
         }
 
         function findUserById(userId) {
-
+            for(var u in users){
+                var user = users[u];
+                if(user._id == userId){
+                    return angular.copy(user);
+                }
+            }
+            return null;
         }
 
         function findUserByUsername(username) {
+            for(var i in users){
+                if(users[i].username == username)
+                    return angular.copy(users[i]);
+            }
+            return null;
 
         }
 
@@ -37,17 +50,30 @@
             for(var i in users){
                 if(users[i].username == username
                 && users[i].password == password)
-                    return users[i];
+                    return angular.copy(users[i]);
             }
             return null;
         }
 
-        function updateUser(userId, user) {
-
+        function updateUser(userId, newUser) {
+            for(var u in users){
+                var user = users[u];
+                if(user._id == userId){
+                    users[u].firstName = newUser.firstName;
+                    users[u].lastName = newUser.lastName;
+                    users[u].username = newUser.username;
+                    return user;
+                }
+            }
+            return null;
         }
 
         function deleteUser(userId) {
-
+            for(var u in users){
+                if(users[u]._id == userId){
+                    users.splice(u, 1);
+                }
+            }
         }
     }
 

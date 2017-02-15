@@ -2,12 +2,12 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
-            <a href="widget-list.html">
+            <a href="#/user/{{model.userID}}/website/{{model.websiteID}}/page/{{model.pageID}}/widget">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
         </div>
         <div class="navbar-text pull-right">
-            <a href="widget-list.html">
+            <a href="">
                 <span class="glyphicon glyphicon-ok"></span>
             </a>
         </div>
@@ -22,13 +22,21 @@
 <div class="container-fluid">
 
     <label for="widget-heading-widget-name">Name</label>
-    <input class="form-control" id="widget-heading-widget-name" placeholder="Name" type="text"/>
+    <input class="form-control"
+           id="widget-heading-widget-name"
+           placeholder="HEADER" type="text"/>
 
     <label for="widget-heading-widget-title">Text</label>
-    <input class="form-control" value="How an Interstellar Starship Could Actually Explore Alpha Centauri" id="widget-heading-widget-title" type="text"></input>
+    <input class="form-control"
+           ng-model="model.widget.text"
+           value="How an Interstellar Starship Could Actually Explore Alpha Centauri"
+           id="widget-heading-widget-title" type="text"></input>
 
     <label for="widget-heading-widget-size">Size</label>
-    <input class="form-control" value="3" id="widget-heading-widget-size" type="text"></input>
+    <input class="form-control"
+           value="3"
+           id="widget-heading-widget-size"
+           type="text"></input>
 
     <a class="btn btn-danger btn-block" href="widget-list.html">
         Delete
@@ -40,7 +48,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="../user/profile.html">
+            <a href="#/user/{{model.userID}}">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>

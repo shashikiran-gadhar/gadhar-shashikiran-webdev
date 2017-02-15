@@ -20,23 +20,48 @@
         return api;
 
         function createPage(websiteId, page) {
-
+            page.websiteId = websiteId;
+            page._id = (new Date()).getTime();
+            pages.push(page);
         }
 
         function findPageByWebsiteId(websiteId) {
-
+            var pagelist = [];
+            for(var p in pages){
+                if(pages[p].websiteId == websiteId){
+                    pagelist.push(pages[p]);
+                }
+            }
+            return angular.copy(pagelist);
         }
 
         function findPageById(pageId) {
-
+            for(var p in pages){
+                var page = pages[p];
+                if(page._id == pageId){
+                    return angular.copy(page);
+                }
+            }
+            return null;
         }
 
         function updatePage(pageId, page) {
-
+            for(var p in pages){
+                if(pages[p]._id == pageId){
+                    pages[p].name = page.name;
+                    pages[p].description = page.description;
+                    return pages[p];
+                }
+            }
+            return null;
         }
 
         function deletePage(pageId) {
-
+            for(var p in pages){
+                if(pages[p]._id == pageId){
+                    pages.splice(p, 1);
+                }
+            }
         }
 
     }

@@ -2,13 +2,13 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
-            <a href="widget-list.html">
+            <a href="#/user/{{model.userID}}/website/{{model.websiteID}}/page/{{model.pageID}}/widget">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
         </div>
 
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="">
                 Choose Widget
             </a>
         </div>
@@ -19,7 +19,7 @@
 
     <ul class="list-group">
         <li class="list-group-item">
-            <a href="widget-heading.html">Header</a>
+            <a ng-click="model.newHeaderWidget()" href="">Header</a>
         </li>
         <li class="list-group-item">
             <a>Label</a>
@@ -37,10 +37,10 @@
             <a>Button</a>
         </li>
         <li class="list-group-item">
-            <a href="widget-image.html">Image</a>
+            <a ng-click="model.newImageWidget()" href="">Image</a>
         </li>
         <li class="list-group-item">
-            <a href="widget-youtube.html">YouTube</a>
+            <a ng-click="model.newYouTubeWidget()" href="">YouTube</a>
         </li>
         <li class="list-group-item">
             <a>Data Table</a>
@@ -58,7 +58,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="../user/profile.html">
+            <a href="#/user/{{model.userID}}">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>
