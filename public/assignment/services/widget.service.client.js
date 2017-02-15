@@ -42,6 +42,32 @@
             return widgetlist;
         }
 
+        function updateWidget(widgetId, widget) {
+            for(var w in widgets){
+                if(widgets[w]._id == widgetId){
+                    switch (widget.widgetType){
+                        case "HEADER":
+                            widgets[w].size = widget.size;
+                            widgets[w].text = widget.text;
+                            return widget[w];
+
+                        case "YOUTUBE":
+                            widgets[w].url = widget.url;
+                            widgets[w].width = widget.width;
+                            return widget[w];
+
+                        case "IMAGE":
+                            widgets[w].url = widget.url;
+                            widgets[w].width = widget.width;
+                            return widget[w];
+
+                        default:
+                            return null;
+                    }
+                }
+            }
+        }
+
         function findWidgetById(widgetId) {
             for(var w in widgets){
                 if(widgets[w]._id == widgetId){
@@ -51,18 +77,12 @@
             return null;
         }
 
-        function updateWidget(widgetId, widget) {
-
-
-        }
-
         function deleteWidget(widgetId) {
             for(var w in widgets){
                 if(widgets[w]._id == widgetId){
-                    widget.splice(w, 1);
+                    widgets.splice(w, 1);
                 }
             }
-
         }
 
     }
