@@ -66,12 +66,13 @@
                     }
                 }
             }
+            return null;
         }
 
         function findWidgetById(widgetId) {
             for(var w in widgets){
                 if(widgets[w]._id == widgetId){
-                    return widgets[w];
+                    return angular.copy(widgets[w]);
                 }
             }
             return null;
