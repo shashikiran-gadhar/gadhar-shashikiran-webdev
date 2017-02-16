@@ -13,7 +13,6 @@
 
 
         //Event Handler
-        vm.getEditorTemplateUrl = getEditorTemplateUrl;
         vm.updateWid = updateWid;
         vm.deleteWidget = deleteWidget;
 
@@ -21,10 +20,6 @@
             vm.widget = WidgetService.findWidgetById(vm.widgetID);
         }
         init();
-
-        function getEditorTemplateUrl(type) {
-            return 'views/widget/templates/widget-'+type+'.view.client.html';
-        }
 
         function updateWid(widget) {
             WidgetService.updateWidget(vm.widgetID, widget);
