@@ -17,7 +17,7 @@
 
         function register(user) {
              var newUser = UserService.createUser(user);
-             console.log(newUser);
+
              $location.url("/user/" + newUser._id);
         }
 

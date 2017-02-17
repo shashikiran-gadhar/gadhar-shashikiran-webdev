@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .factory("UserService", userService);
 
-    function userService() {
+    function userService($http) {
         var users = [
             {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder", email: "alice@gmail.com" },
             {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley", email: "bob.marley@gmail.com"  },
@@ -28,13 +28,7 @@
         }
 
         function findUserById(userId) {
-            for(var u in users){
-                var user = users[u];
-                if(user._id == userId){
-                    return angular.copy(user);
-                }
-            }
-            return null;
+            return $http.get("/api/user/" + userId);
         }
 
         function findUserByUsername(username) {
@@ -46,26 +40,11 @@
         }
 
         function findUserByCredentials(username, password) {
-            for(var i in users){
-                if(users[i].username == username
-                && users[i].password == password)
-                    return angular.copy(users[i]);
-            }
-            return null;
+            return $http.get("/api/user?username=" + username + "&password=" + password);
         }
 
         function updateUser(userId, newUser) {
-            for(var u in users){
-                var user = users[u];
-                if(user._id == userId){
-                    users[u].firstName = newUser.firstName;
-                    users[u].lastName = newUser.lastName;
-                    users[u].username = newUser.username;
-                    users[u].email = newUser.email;
-                    return user;
-                }
-            }
-            return null;
+            return $http.put("/api/user/" + userId, newUser);
         }
 
         function deleteUser(userId) {
