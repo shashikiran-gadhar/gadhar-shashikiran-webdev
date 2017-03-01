@@ -14,7 +14,11 @@
 
 
         function init() {
-            vm.pages = PageService.findPageByWebsiteId(vm.websiteID);
+            PageService
+                .findPageByWebsiteId(vm.websiteID)
+                .success(function (pages) {
+                    vm.pages = angular.copy(pages);
+                })
         }
         init();
 
@@ -32,19 +36,35 @@
 
 
         function init() {
-            vm.page = PageService.findPageById(vm.pageID);
-            vm.pages = angular.copy(PageService.findPageByWebsiteId(vm.websiteID));
+             PageService
+                    .findPageById(vm.pageID)
+                    .success(function (page) {
+                        vm.page = page;
+                    })
+            PageService
+                .findPageByWebsiteId(vm.websiteID)
+                .success(function (pages) {
+                    vm.pages = angular.copy(pages);
+                })
+
+
         }
         init();
 
         function deletePage() {
-            PageService.deletePage(vm.pageID);
-            $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page");
+            PageService
+                .deletePage(vm.pageID)
+                .success(function () {
+                    $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page");
+                })
         }
 
         function editPage(newPage) {
-            PageService.updatePage(vm.pageID, newPage);
-            $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page");
+            PageService
+                .updatePage(vm.pageID, newPage)
+                .success(function () {
+                    $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page");
+                })
 
         }
 
@@ -60,13 +80,21 @@
 
 
         function init() {
-            vm.pages = PageService.findPageByWebsiteId(vm.websiteID);
+            PageService
+                .findPageByWebsiteId(vm.websiteID)
+                .success(function (pages) {
+                    vm.pages = angular.copy(pages);
+                })
         }
         init();
 
         function createPage(newPage) {
-            PageService.createPage(vm.websiteID, newPage);
-            $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page");
+            PageService
+                .createPage(vm.websiteID, newPage)
+                .success(function () {
+                    $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page");
+                })
+
         }
 
     }

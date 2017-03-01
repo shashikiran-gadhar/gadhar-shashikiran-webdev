@@ -12,13 +12,20 @@
 
 
         function init() {
-            vm.websites = WebsiteService.findWebsitesByUser(vm.userID);
+            WebsiteService
+                .findWebsitesByUser(vm.userID)
+                .success(function (websites) {
+                    vm.websites = websites;
+                })
         }
         init();
         
         function createWebsite(website) {
-            WebsiteService.createWebsite(vm.userID, website);
-            $location.url("/user/" + vm.userID + "/website");
+            WebsiteService
+                .createWebsite(vm.userID, website)
+                .success(function () {
+                    $location.url("/user/" + vm.userID + "/website");
+                })
             
         }
 

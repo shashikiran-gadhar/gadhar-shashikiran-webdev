@@ -16,10 +16,23 @@
         init();
 
         function register(user) {
-             var newUser = UserService.createUser(user);
-
-             $location.url("/user/" + newUser._id);
+            UserService
+                .findUserByUsername(user.username)
+                .success(function (user) {
+                    vm.error = "Username already taken";
+                })
+                .error(function () {
+                    UserService
+                        .createUser(user)
+                        .success(function (newUser) {
+                            $location.url("/user/" + newUser._id);
+                        })
+                        .error(function () {
+                            vm.error = "User Registration Failed";
+                        })
+                })
         }
+
 
     }
 })();

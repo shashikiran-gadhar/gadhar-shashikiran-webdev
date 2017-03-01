@@ -18,7 +18,11 @@
 
 
         function init() {
-            vm.widgets = WidgetService.findWidgetsByPageId(vm.pageID);
+            WidgetService
+                .findWidgetsByPageId(vm.pageID)
+                .success(function (widgets) {
+                    vm.widgets = angular.copy(widgets);
+                })
         }
         init();
 
@@ -52,27 +56,36 @@
 
         function newHeaderWidget() {
             var headerWidget ={"widgetType": "HEADER", "size": "2", "text": "GIZMODO"};
-            var newWidget = WidgetService.createWidget(vm.pageID, headerWidget);
-            $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page/" +
-                            vm.pageID + "/widget/" + newWidget._id);
+            WidgetService
+                .createWidget(vm.pageID, headerWidget)
+                .success(function (newWidget) {
+                    $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page/" +
+                        vm.pageID + "/widget/" + newWidget._id);
+                })
 
         }
 
         function newImageWidget() {
             var imageWidget = {"widgetType": "IMAGE", "width": "100%",
                 "url": "http://lorempixel.com/400/200/"};
-            var newImgWidget = WidgetService.createWidget(vm.pageID, imageWidget);
-            $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page/" +
-                            vm.pageID + "/widget/" + newImgWidget._id);
+            WidgetService
+                .createWidget(vm.pageID, imageWidget)
+                .success(function (newImgWidget) {
+                    $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page/" +
+                        vm.pageID + "/widget/" + newImgWidget._id);
+                })
 
         }
 
         function newYouTubeWidget() {
             var youTubeWidget ={"widgetType": "YOUTUBE", "width": "100%",
                 "url": "https://youtu.be/AM2Ivdi9c4E" };
-            var newYTWidget = WidgetService.createWidget(vm.pageID, youTubeWidget);
-            $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page/" +
-                            vm.pageID + "/widget/" + newYTWidget._id);
+            WidgetService
+                .createWidget(vm.pageID, youTubeWidget)
+                .success(function (newYTWidget) {
+                    $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page/" +
+                        vm.pageID + "/widget/" + newYTWidget._id);
+                })
         }
     }
 

@@ -17,18 +17,28 @@
         vm.deleteWidget = deleteWidget;
 
         function init() {
-            vm.widget = WidgetService.findWidgetById(vm.widgetID);
+            WidgetService
+                .findWidgetById(vm.widgetID)
+                .success(function (widget) {
+                    vm.widget = widget;
+                })
         }
         init();
 
         function updateWid(widget) {
-            WidgetService.updateWidget(vm.widgetID, widget);
-            $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page/" + vm.pageID + "/widget");
+            WidgetService
+                .updateWidget(vm.widgetID, widget)
+                .success(function () {
+                    $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page/" + vm.pageID + "/widget");
+                })
         }
 
         function deleteWidget() {
-            WidgetService.deleteWidget(vm.widgetID);
-            $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page/" + vm.pageID + "/widget");
+            WidgetService
+                .deleteWidget(vm.widgetID)
+                .success(function () {
+                    $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page/" + vm.pageID + "/widget");
+                })
         }
 
     }

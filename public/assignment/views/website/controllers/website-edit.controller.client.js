@@ -13,19 +13,33 @@
         vm.deleteSite = deleteSite;
 
         function init() {
-            vm.website = WebsiteService.findWebsiteById(vm.websiteID);
-            vm.websites = angular.copy(WebsiteService.findWebsitesByUser(vm.userID));
+            WebsiteService
+                .findWebsiteById(vm.websiteID)
+                .success(function (website) {
+                    vm.website = website;
+                });
+            WebsiteService
+                .findWebsitesByUser(vm.userID)
+                .success(function (websites) {
+                    vm.websites = angular.copy(websites);
+                })
         }
         init();
 
         function editWebsite(newWebsite) {
-            WebsiteService.updateWebsite(vm.websiteID, newWebsite);
-            $location.url("/user/" + vm.userID + "/website/");
+            WebsiteService
+                .updateWebsite(vm.websiteID, newWebsite)
+                .success(function () {
+                    $location.url("/user/" + vm.userID + "/website/");
+                })
         }
 
         function deleteSite(){
-            WebsiteService.deleteWebsite(vm.websiteID);
-            $location.url("/user/" + vm.userID + "/website/");
+            WebsiteService
+                .deleteWebsite(vm.websiteID)
+                .success(function () {
+                    $location.url("/user/" + vm.userID + "/website/");
+                })
 
         }
 

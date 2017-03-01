@@ -9,6 +9,7 @@
 
         //event handlers
         vm.update = update;
+        vm.unRegisterUser = unRegisterUser;
 
         function init() {
             var promise = UserService.findUserById(userID);
@@ -28,6 +29,21 @@
                         vm.message = "User Successfully Updated";
                     }
                 });
+        }
+
+        function unRegisterUser(user) {
+            var ans = confirm("Are you sure that you want to UnRegister?")
+            if(ans){
+                UserService
+                    .deleteUser(user._id)
+                    .success(function () {
+                        $location.url("/login");
+                    })
+                    .error(function () {
+                        vm.error = "Unable to UnRegister User";
+                    })
+            }
+
         }
     }
     
