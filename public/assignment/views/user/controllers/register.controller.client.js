@@ -10,7 +10,6 @@
         //Event Handlers
         vm.register = register;
 
-
         function init() {
         }
         init();
