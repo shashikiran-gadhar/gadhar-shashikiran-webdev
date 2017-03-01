@@ -22,10 +22,14 @@
 <div class="container-fluid">
 
     <label for="widget-youtube-widget-name">Name</label>
-    <input class="form-control" id="widget-youtube-widget-name" placeholder="Name" type="text"/>
+    <input class="form-control"
+           ng-model="model.widget.name"
+           id="widget-youtube-widget-name" placeholder="Name" type="text"/>
 
-    <label for="widget-youtube-widget-title">Text</label>
-    <input class="form-control" id="widget-youtube-widget-title" type="text"></input>
+    <label for="widget-youtube-widget-title">Title</label>
+    <input class="form-control"
+           ng-model="model.widget.title"
+           id="widget-youtube-widget-title" type="text"></input>
 
     <label for="widget-youtube-widget-url">URL</label>
     <input class="form-control"

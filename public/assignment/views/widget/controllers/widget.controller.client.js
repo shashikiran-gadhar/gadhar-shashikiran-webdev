@@ -22,7 +22,12 @@
                 .findWidgetsByPageId(vm.pageID)
                 .success(function (widgets) {
                     vm.widgets = angular.copy(widgets);
+                    vm.widgets.sort(function(a,b) {return (a.index > b.index) ? 1 : ((b.index > a.index) ? -1 : 0);} );
                 })
+
+            var initialIndex = -1;
+            var finalIndex = -1;
+
         }
         init();
 
