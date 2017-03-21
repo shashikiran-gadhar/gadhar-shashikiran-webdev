@@ -1,5 +1,5 @@
 
-module.exports = function (app) {
+module.exports = function (app, userModel) {
     app.get("/api/user", findUser);
     app.get("/api/user/:userID", findUserByID);
     app.put("/api/user/:userID", updateUser);
@@ -15,9 +15,12 @@ module.exports = function (app) {
 
     function createUser(req, res) {
         var newUser = req.body;
-        newUser._id = (new Date()).getTime() + "";
-        users.push(newUser);
-        res.json(newUser);
+        userModel.createUser(newUser)
+            .then(function (user) {
+                res.json(newUser);
+            }, function (err) {
+                res.sendStatus(500).send(err);
+            });
     }
 
     function findUser(req,res) {
