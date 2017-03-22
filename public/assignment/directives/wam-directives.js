@@ -1,9 +1,9 @@
 (function () {
     angular
         .module('wbdvDirectives', [])
-        .directive('wbdvSortable', wbdvSortable);
+        .directive('wamSortable', wamSortable);
 
-    function wbdvSortable($http, $routeParams) {
+    function wamSortable($http, $routeParams) {
         function linkFunc(scope, element, attributes) {
             var pageId = $routeParams["pid"];
             element.sortable({
@@ -21,7 +21,7 @@
                             newMap[id] = index;
                         }
                     });
-                    $http.put("/page/"+pageId+"/widget?initial=" + initialIndex + "&final="+ finalIndex, newMap);
+                    $http.put("/page/"+pageId+"/widget?start=" + initialIndex + "&end="+ finalIndex, newMap);
                 }});
         }
 

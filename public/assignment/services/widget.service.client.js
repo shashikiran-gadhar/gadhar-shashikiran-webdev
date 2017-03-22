@@ -11,6 +11,7 @@
             "findWidgetById" : findWidgetById,
             "updateWidget" : updateWidget,
             "deleteWidget" : deleteWidget,
+            "updateWidgetFlickr" : updateWidgetFlickr
         };
         return api;
 
@@ -32,6 +33,11 @@
 
         function deleteWidget(widgetId) {
             return $http.delete("/api/widget/"+ widgetId);
+        }
+
+        function updateWidgetFlickr(widgetId, url) {
+            var link = {url: url};
+            return $http.put("/api/flickr/"+widgetId, link);
         }
 
     }

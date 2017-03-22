@@ -92,7 +92,18 @@ module.exports = function (mongoose, q) {
     }
 
     function addWidget(pageId, widgetId) {
-
+        var deferred = q.defer();
+        PageModel.findById(pageId, function (err, page) {
+            if(err){
+                deferred.reject(err);
+            }
+            else {
+                page.widgets.push(widgetId);
+                page.save();
+                deferred.resolve();
+            }
+        });
+        return deferred.promise;
     }
 
 };

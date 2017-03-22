@@ -10,6 +10,7 @@ module.exports = function (mongoose, q) {
     WidgetModel.updateWidget = updateWidget;
     WidgetModel.deleteWidget = deleteWidget;
     WidgetModel.reorderWidget = reorderWidget;
+    WidgetModel.updateWidgetFlickr = updateWidgetFlickr;
 
     module.exports = WidgetModel;
 
@@ -19,7 +20,8 @@ module.exports = function (mongoose, q) {
         "findWidgetById" : findWidgetById,
         "updateWidget" : updateWidget,
         "deleteWidget" : deleteWidget,
-        "reorderWidget" : reorderWidget
+        "reorderWidget" : reorderWidget,
+        "updateWidgetFlickr": updateWidgetFlickr
     };
 
     return api;
@@ -93,8 +95,40 @@ module.exports = function (mongoose, q) {
         return deferred.promise;
     }
 
-    function reorderWidget(pageId, start, end) {
+    function reorderWidget(pageId, newmap) {
+        var deferred = q.defer();
 
+        findAllWidgetsForPage(pageId)
+            .then(function (widgets) {
+                for (var i = 0; i < widgets.length; i++) {
+                    var id = widgets[i]._id;
+                    widgets[i].index = newmap[id];
+                    widgets[i].save();
+                }
+                deferred.resolve();
+
+            }, function (err) {
+                deferred.reject(err);
+            })
+
+        return deferred.promise;
+    }
+
+    function updateWidgetFlickr(widgetId, url) {
+        var deferred = q.defer();
+        WidgetModel.update(
+            { _id : widgetId },
+            {
+                url: url,
+            }, function (err, user) {
+                if(err){
+                    deferred.reject(err);
+                }
+                else {
+                    deferred.resolve(user);
+                }
+            })
+        return deferred.promise;
     }
 
 };

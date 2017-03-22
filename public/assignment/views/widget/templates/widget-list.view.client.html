@@ -21,7 +21,7 @@
 
 <div class="container-fluid">
 
-    <div wbdv-sortable>
+    <div wam-sortable>
         <div ng-repeat="widget in model.widgets" id="{{widget._id}}">
             <div ng-switch="widget.type">
                 <div class="jga-toolbar">
@@ -41,6 +41,9 @@
                 </div>
                 <div ng-switch-when="HTML">
                     <ng-include src="'views/widget/templates/widget-html-list.view.client.html'"></ng-include>
+                </div>
+                <div ng-switch-when="TEXT">
+                    <ng-include src="'views/widget/templates/widget-text-list.view.client.html'"></ng-include>
                 </div>
             </div>
         </div>

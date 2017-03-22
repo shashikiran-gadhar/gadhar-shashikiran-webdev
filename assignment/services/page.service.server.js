@@ -68,7 +68,7 @@ module.exports = function (app, pageModel) {
     function addWidget(req, res) {
         var widgetId = req.params.widgetId;
         var pageId = req.params.pageId;
-        userModel.addWidget(pageId, widgetId)
+        pageModel.addWidget(pageId, widgetId)
             .then(function (widget) {
                 res.sendStatus(200);
             }, function (err) {

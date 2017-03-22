@@ -1,5 +1,5 @@
 (function () {
     angular
-        .module("WebAppMaker", ['ngRoute', 'wbdvDirectives']);
+        .module("WebAppMaker",  ['ngRoute', 'wbdvDirectives', 'textAngular']);
 
 })();

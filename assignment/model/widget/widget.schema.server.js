@@ -16,6 +16,7 @@ module.exports = function (mongoose) {
         icon: String,
         deletable: Boolean,
         formatted: Boolean,
+        index: String,
         dateCreated: { type: Date, default: Date.now }
     }, {collection: 'assignmentDB.widget'});
 

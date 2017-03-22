@@ -53,6 +53,10 @@
         <button  type="submit" class="btn btn-block btn-primary form-control">Upload Image</button>
     </form>
 
+    <div class="form-group">
+        <a href="#/user/{{model.userID}}/website/{{model.websiteID}}/page/{{model.pageID}}/widget/{{model.widget._id}}/flicker" class="btn btn-info form-control">Search</a>
+    </div>
+
     <a class="btn btn-danger btn-block" ng-click="model.deleteWidget()">
         Delete
     </a>
