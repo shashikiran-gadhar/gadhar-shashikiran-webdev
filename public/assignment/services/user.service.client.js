@@ -11,7 +11,8 @@
             "findUserByUsername" : findUserByUsername,
             "findUserByCredentials" : findUserByCredentials,
             "updateUser" : updateUser,
-            "deleteUser" : deleteUser
+            "deleteUser" : deleteUser,
+            "addWebsite" : addWebsite
         };
         return api;
         
@@ -37,6 +38,10 @@
 
         function deleteUser(userId) {
             return $http.delete("/api/user/" + userId);
+        }
+
+        function addWebsite(userId, websiteId) {
+            return $http.put("/api/user/"+userId+"/website/"+websiteId);
         }
     }
 

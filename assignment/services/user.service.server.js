@@ -5,6 +5,7 @@ module.exports = function (app, userModel) {
     app.put("/api/user/:userID", updateUser);
     app.post("/api/user", createUser);
     app.delete("/api/user/:userID", deleteUser);
+    app.put("/api/user/:userId/website/:websiteId", addWebsite);
 
     var users = [
         {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder", email: "alice@gmail.com" },
@@ -17,13 +18,13 @@ module.exports = function (app, userModel) {
         var newUser = req.body;
         userModel.createUser(newUser)
             .then(function (user) {
-                res.json(newUser);
+                res.json(user);
             }, function (err) {
                 res.sendStatus(500).send(err);
             });
     }
 
-    function findUser(req,res) {
+    function findUser(req, res) {
         var username = req.query.username;
         var password = req.query.password;
         if(username && password){
@@ -36,62 +37,71 @@ module.exports = function (app, userModel) {
 
     function findUserByUsername(req, res) {
         var username = req.query.username;
-        var user = users.find(function (u) {
-            return u.username == username;
-        });
-        if(user){
-            res.json(user);
-        }
-        else
-        {
-            res.sendStatus(404).send({message: 'User Not Found'});
-        }
+        userModel.findUserByUsername(username)
+            .then(function (user) {
+                if(user.length != 0){
+                    res.json(user);
+                }
+                else{
+                    res.sendStatus(500).send('err');
+                }
+            }, function (err) {
+                res.sendStatus(500).send('err');
+
+            });
     }
 
     function findUserByCredentials(req, res) {
         var username = req.query.username;
         var password = req.query.password;
-        var user = users.find(function (user) {
-            return user.username == username && user.password == password;
-        })
-
-        res.json(user);
+        userModel.findUserByCredentials(username, password)
+            .then(function (user) {
+                res.json(user);
+            }, function (err) {
+                res.sendStatus(500).send(err);
+            });
     }
 
     function findUserByID(req, res) {
         var userID = req.params.userID;
-        var user = users.find(function (u) {
-            return u._id == userID;
-        });
-        res.send(user);
+        userModel.findUserById(userID)
+            .then(function (user) {
+                res.json(user);
+            }, function (err) {
+                res.sendStatus(404).send({message: 'User Not Found'});
+            });
     }
 
     function updateUser(req, res) {
         var userId = req.params.userID;
         var newUser = req.body;
-        for(var u in users){
-            var user = users[u];
-            if(user._id == userId){
-                users[u].firstName = newUser.firstName;
-                users[u].lastName = newUser.lastName;
-                users[u].username = newUser.username;
-                users[u].email = newUser.email;
+        userModel.updateUser(userId, newUser)
+            .then(function (user) {
                 res.json(user);
-                return;
-            }
-        }
+            }, function (err) {
+                res.sendStatus(500).send(err);
+            });
     }
 
     function deleteUser(req, res) {
         var userId = req.params.userID;
-        for(var u in users){
-            if(users[u]._id == userId){
-                users.splice(u, 1);
-                res.sendStatus(200);
-                return;
-            }
-        }
-        res.sendStatus(404);
+        userModel.deleteUser(userId)
+            .then(function (user) {
+                res.send(200);
+            }, function (err) {
+                res.sendStatus(500).send(err);
+            });
     }
-}
+    
+    function addWebsite(req, res) {
+        var userId = req.params.userId;
+        var websiteId = req.params.websiteId;
+        userModel.addWebsite(userId, websiteId)
+            .then(function (user) {
+                res.send(200);
+            }, function (err) {
+                res.sendStatus(500).send(err);
+            })
+    }
+};
 

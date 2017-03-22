@@ -70,7 +70,7 @@
 
     }
 
-    function PageNewController($routeParams, PageService, $location) {
+    function PageNewController($routeParams, PageService, $location, WebsiteService) {
         var vm = this;
         vm.userID = $routeParams['uid'];
         vm.websiteID = $routeParams['wid'];
@@ -91,10 +91,13 @@
         function createPage(newPage) {
             PageService
                 .createPage(vm.websiteID, newPage)
-                .success(function () {
-                    $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page");
-                })
-
+                .success(function (page) {
+                    WebsiteService
+                        .addPage(vm.websiteID, page._id)
+                        .success(function () {
+                            $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page");
+                        });
+                });
         }
 
     }

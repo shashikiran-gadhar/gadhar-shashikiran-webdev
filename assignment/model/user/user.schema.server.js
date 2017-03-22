@@ -7,7 +7,7 @@ module.exports = function (mongoose) {
         lastName: String,
         email: String,
         phone: String,
-        websites: [],
+        websites: [{type:mongoose.Schema.Types.ObjectId, ref: 'WebsiteModel'}],
         dateCreated: Date
     }, {collection: 'assignmentDB.user'});
 
