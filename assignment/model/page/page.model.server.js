@@ -11,6 +11,7 @@ module.exports = function (mongoose, q) {
         "deletePage" : deletePage,
         "addWidget" : addWidget
     };
+    return api;
 
     function  createPage(websiteId, page){
         var deferred = q.defer();

@@ -60,7 +60,7 @@
         init();
 
         function newHeaderWidget() {
-            var headerWidget ={"widgetType": "HEADER", "size": "2", "text": "GIZMODO"};
+            var headerWidget ={"type": "HEADING", "size": "2", "text": "GIZMODO"};
             WidgetService
                 .createWidget(vm.pageID, headerWidget)
                 .success(function (newWidget) {
@@ -71,7 +71,7 @@
         }
 
         function newImageWidget() {
-            var imageWidget = {"widgetType": "IMAGE", "width": "100%",
+            var imageWidget = {"type": "IMAGE", "width": "100%",
                 "url": "http://lorempixel.com/400/200/"};
             WidgetService
                 .createWidget(vm.pageID, imageWidget)
@@ -83,7 +83,7 @@
         }
 
         function newYouTubeWidget() {
-            var youTubeWidget ={"widgetType": "YOUTUBE", "width": "100%",
+            var youTubeWidget ={"type": "YOUTUBE", "width": "100%",
                 "url": "https://youtu.be/AM2Ivdi9c4E" };
             WidgetService
                 .createWidget(vm.pageID, youTubeWidget)

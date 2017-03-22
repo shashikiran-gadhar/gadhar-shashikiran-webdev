@@ -1,5 +1,5 @@
 
-module.exports = function (app, PageModel) {
+module.exports = function (app, pageModel) {
     app.post("/api/website/:websiteId/page", createPage);
     app.get("/api/website/:websiteId/page", findPageByWebsiteId);
     app.get("/api/page/:pageId", findPageById);
@@ -7,16 +7,16 @@ module.exports = function (app, PageModel) {
     app.delete("/api/page/:pageId", deletePage);
     app.post("/api/page/:pageId/widget/:widgetId", addWidget);
 
-    var pages = [
-        { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
-        { "_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem" },
-        { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" }
-    ];
+    // var pages = [
+    //     { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
+    //     { "_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem" },
+    //     { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" }
+    // ];
 
     function createPage(req, res) {
         var websiteId = req.params.websiteId;
         var newPage = req.body;
-        PageModel.createPage(websiteId, newPage)
+        pageModel.createPage(websiteId, newPage)
             .then(function (page) {
                 res.json(page);
             }, function (err) {
@@ -26,7 +26,7 @@ module.exports = function (app, PageModel) {
 
     function findPageByWebsiteId(req, res) {
         var websiteId = req.params.websiteId;
-        PageModel.findAllPagesForWebsite(websiteId)
+        pageModel.findAllPagesForWebsite(websiteId)
             .then(function (pages) {
                 res.json(pages);
             }, function (err) {
@@ -36,7 +36,7 @@ module.exports = function (app, PageModel) {
 
     function findPageById(req, res) {
         var pageId = req.params.pageId;
-        PageModel.findPageById(pageId)
+        pageModel.findPageById(pageId)
             .then(function (page) {
                 res.json(page);
             }, function (err) {
@@ -47,7 +47,7 @@ module.exports = function (app, PageModel) {
     function updatePage(req, res) {
         var pageId = req.params.pageId;
         var newPage = req.body;
-        PageModel.updatePage(pageId, page)
+        pageModel.updatePage(pageId, newPage)
             .then(function (page) {
                 res.json(page);
             }, function (err) {
@@ -57,7 +57,7 @@ module.exports = function (app, PageModel) {
 
     function deletePage(req, res) {
         var pageId = req.params.pageId;
-        PageModel.deletePage(pageId)
+        pageModel.deletePage(pageId)
             .then(function (status) {
                 res.sendStatus(200);
             }, function (err) {
@@ -70,7 +70,7 @@ module.exports = function (app, PageModel) {
         var pageId = req.params.pageId;
         userModel.addWidget(pageId, widgetId)
             .then(function (widget) {
-                res.send(200);
+                res.sendStatus(200);
             }, function (err) {
                 res.sendStatus(500).send(err);
             });

@@ -1,8 +1,9 @@
 module.exports = function (mongoose) {
 
+    var widgets = ['HEADING', 'IMAGE', 'YOUTUBE', 'HTML', 'TEXT'];
     var WidgetSchema = mongoose.Schema({
         _page: {type:mongoose.Schema.Types.ObjectId, ref: 'PageModel'},
-        type: String,
+        type: {type: String, enum: widgets},
         name: String,
         text: String,
         placeholder: String,
@@ -15,7 +16,7 @@ module.exports = function (mongoose) {
         icon: String,
         deletable: Boolean,
         formatted: Boolean,
-        dateCreated: Date
+        dateCreated: { type: Date, default: Date.now }
     }, {collection: 'assignmentDB.widget'});
 
     return WidgetSchema;

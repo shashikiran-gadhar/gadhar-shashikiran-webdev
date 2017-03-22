@@ -18,7 +18,9 @@
 
             promise.success(function (user) {
                 if(user){
-                    $location.url("/user/" + user._id);
+                    console.log(user._id);
+                    console.log("login ok");
+                    $location.url("/user/" + user[0]._id);
                 }
                 else{
                     vm.error = "User not found";

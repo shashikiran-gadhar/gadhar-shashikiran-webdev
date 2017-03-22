@@ -5,7 +5,7 @@ module.exports = function (mongoose) {
         name: String,
         description: String,
         pages: [{type:mongoose.Schema.Types.ObjectId, ref: 'PageModel'}],
-        dateCreated: Date
+        dateCreated: { type: Date, default: Date.now }
     }, {collection: 'assignmentDB.website'});
 
     return WebsiteSchema;

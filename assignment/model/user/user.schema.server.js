@@ -8,7 +8,7 @@ module.exports = function (mongoose) {
         email: String,
         phone: String,
         websites: [{type:mongoose.Schema.Types.ObjectId, ref: 'WebsiteModel'}],
-        dateCreated: Date
+        dateCreated: { type: Date, default: Date.now }
     }, {collection: 'assignmentDB.user'});
 
     return UserSchema;
