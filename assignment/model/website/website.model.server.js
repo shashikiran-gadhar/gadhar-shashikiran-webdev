@@ -3,6 +3,16 @@ module.exports = function (mongoose, q) {
     var WebsiteSchema = require('./website.schema.server')(mongoose);
     var WebsiteModel = mongoose.model('WebsiteModel', WebsiteSchema);
 
+
+    WebsiteModel.createWebsiteForUser = createWebsiteForUser;
+    WebsiteModel.findAllWebsitesForUser = findAllWebsitesForUser;
+    WebsiteModel.findWebsiteById = findWebsiteById;
+    WebsiteModel.updateWebsite = updateWebsite;
+    WebsiteModel.deleteWebsite = deleteWebsite;
+    WebsiteModel.addPage = addPage;
+
+    module.exports = WebsiteModel;
+
     var api = {
         "createWebsiteForUser": createWebsiteForUser,
         "findAllWebsitesForUser": findAllWebsitesForUser,
@@ -13,6 +23,7 @@ module.exports = function (mongoose, q) {
     };
 
     return api;
+
 
     function createWebsiteForUser(userId, website) {
         var deferred = q.defer();
@@ -74,12 +85,13 @@ module.exports = function (mongoose, q) {
 
     function deleteWebsite(websiteId) {
         var deferred = q.defer();
-        WebsiteModel.remove({_id: websiteId}, function (err, status) {
+        WebsiteModel.findByIdAndRemove({_id: websiteId}, function (err, website) {
             if(err){
                 deferred.reject(err);
             }
             else {
-                deferred.resolve();
+                website.remove();
+                deferred.resolve(website);
             }
         });
         return deferred.promise;

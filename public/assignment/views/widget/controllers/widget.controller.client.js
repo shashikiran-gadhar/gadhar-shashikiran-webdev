@@ -54,6 +54,7 @@
         vm.newHeaderWidget = newHeaderWidget;
         vm.newImageWidget = newImageWidget;
         vm.newYouTubeWidget = newYouTubeWidget;
+        vm.newHTMLWidget = newHTMLWidget;
 
         function init() {
         }
@@ -91,6 +92,17 @@
                     $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page/" +
                         vm.pageID + "/widget/" + newYTWidget._id);
                 })
+        }
+
+        function newHTMLWidget() {
+            var htmlWidget = {"type" : "HTML"}
+            WidgetService
+                .createWidget(vm.pageID, htmlWidget)
+                .success(function (newWidget) {
+                    $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page/" +
+                        vm.pageID + "/widget/" + newWidget._id);
+                });
+
         }
     }
 

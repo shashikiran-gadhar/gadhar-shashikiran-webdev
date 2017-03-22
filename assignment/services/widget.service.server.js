@@ -122,4 +122,4 @@ module.exports = function (app, widgetModel) {
         res.sendStatus(200);
     }
 
-}
+};

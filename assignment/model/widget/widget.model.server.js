@@ -3,6 +3,16 @@ module.exports = function (mongoose, q) {
     var WidgetSchema = require('./widget.schema.server')(mongoose);
     var WidgetModel = mongoose.model('WidgetModel', WidgetSchema);
 
+
+    WidgetModel.createWidget = createWidget;
+    WidgetModel.findAllWidgetsForPage = findAllWidgetsForPage;
+    WidgetModel.findWidgetById = findWidgetById;
+    WidgetModel.updateWidget = updateWidget;
+    WidgetModel.deleteWidget = deleteWidget;
+    WidgetModel.reorderWidget = reorderWidget;
+
+    module.exports = WidgetModel;
+
     var api = {
         "createWidget" : createWidget,
         "findAllWidgetsForPage" : findAllWidgetsForPage,
@@ -71,11 +81,12 @@ module.exports = function (mongoose, q) {
 
     function deleteWidget(widgetId) {
         var deferred = q.defer();
-        WidgetModel.remove({_id: widgetId}, function (err, status) {
+        WidgetModel.findByIdAndRemove({_id: widgetId}, function (err, widget) {
             if(err){
                 deferred.reject(err);
             }
             else {
+                widget.remove();
                 deferred.resolve();
             }
         });

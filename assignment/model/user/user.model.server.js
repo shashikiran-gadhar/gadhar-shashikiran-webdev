@@ -3,6 +3,17 @@ module.exports = function (mongoose, q) {
     var UserSchema = require('./user.schema.server')(mongoose);
     var UserModel = mongoose.model('UserModel', UserSchema);
 
+
+    UserModel.createUser = createUser;
+    UserModel.findUserById = findUserById;
+    UserModel.findUserByUsername = findUserByUsername;
+    UserModel.findUserByCredentials = findUserByCredentials;
+    UserModel.updateUser =  updateUser;
+    UserModel.deleteUser = deleteUser;
+    UserModel.addWebsite = addWebsite;
+
+    module.exports = UserModel;
+
     var api ={
         "createUser" : createUser,
         "findUserById" : findUserById,
@@ -91,12 +102,13 @@ module.exports = function (mongoose, q) {
     
     function deleteUser(userId) {
         var deferred = q.defer();
-        UserModel.remove({_id: userId}, function (err, status) {
+        UserModel.findByIdAndRemove({_id: userId}, function (err, user) {
             if(err){
                 deferred.reject(err);
             }
             else {
-                deferred.resolve(status);
+                user.remove();
+                deferred.resolve(user);
             }
         });
         return deferred.promise;
