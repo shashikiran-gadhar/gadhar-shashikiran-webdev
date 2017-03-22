@@ -1,4 +1,24 @@
-<div class="container-fluid bottom-padding top-padding">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a href="#/user/{{model.userID}}/website/{{model.websiteID}}/page/{{model.pageID}}/widget">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right" ng-click="model.updateWid(model.widget)">
+            <a href="">
+                <span class="glyphicon glyphicon-ok"></span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="">
+                Edit HTML Widget
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
     <div class="form-group">
         Name
         <input ng-model="model.widget.name" class="form-control" placeholder="Text"/>
@@ -9,3 +29,13 @@
     </div>
     <a ng-click="model.deleteWidget()" class="btn btn-danger form-control">Delete</a>
 </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#/user/{{model.userID}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>

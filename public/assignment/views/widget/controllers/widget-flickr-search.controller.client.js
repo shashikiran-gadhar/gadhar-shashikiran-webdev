@@ -1,7 +1,7 @@
 (function () {
     var app = angular
-        .module("WebAppMaker");
-    app.controller("FlickrImageSearchController", FlickrImageSearchController);
+        .module("WebAppMaker")
+        .controller("FlickrImageSearchController", FlickrImageSearchController);
 
 
     function FlickrImageSearchController(FlickrService, WidgetService, $routeParams, $location) {

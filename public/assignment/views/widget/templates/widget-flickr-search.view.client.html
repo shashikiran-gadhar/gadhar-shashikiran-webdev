@@ -1,19 +1,21 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
-            <a href="#/user/{{model.userID}}/website/{{model.websiteID}}/page/{{model.pageID}}/widget" class="white_navbar navbar-link">
-                  <span class="glyphicon glyphicon-chevron-left">
-                  </span>
+            <a href="#/user/{{model.userID}}/website/{{model.websiteID}}/page/{{model.pageID}}/widget/{{model.widgetID}}">
+                <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
         </div>
-        <a class="navbar-brand">
-            <label>Search Flickr</label>
-        </a>
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="">
+                Search Flickr
+            </a>
+        </div>
     </div>
 </nav>
 
 
-<div class="container-fluid top-padding">
+<div class="container-fluid">
     <div class="input-group">
         <input ng-model="searchText" type="text" class="form-control">
         <span class="input-group-btn">
@@ -31,12 +33,11 @@
     </div>
 </div>
 
-<div class="bottom-padding"></div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="#/user/{{model.userID}}" class="navbar-link">
+            <a href="#/user/{{model.userID}}">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>
