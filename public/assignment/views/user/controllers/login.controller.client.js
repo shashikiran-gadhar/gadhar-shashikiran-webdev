@@ -18,8 +18,6 @@
 
             promise.success(function (user) {
                 if(user){
-                    console.log(user._id);
-                    console.log("login ok");
                     $location.url("/user/" + user[0]._id);
                 }
                 else{

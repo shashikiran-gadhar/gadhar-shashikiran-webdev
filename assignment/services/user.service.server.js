@@ -7,12 +7,6 @@ module.exports = function (app, userModel) {
     app.delete("/api/user/:userID", deleteUser);
     app.put("/api/user/:userId/website/:websiteId", addWebsite);
 
-    // var users = [
-    //     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder", email: "alice@gmail.com" },
-    //     {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley", email: "bob.marley@gmail.com"  },
-    //     {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia", email: "charly123@gmail.com"  },
-    //     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi", email: "jose2323@gmail.com" }
-    // ];
 
     function createUser(req, res) {
         var newUser = req.body;

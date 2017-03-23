@@ -74,12 +74,8 @@ module.exports = function (app, widgetModel) {
         var websiteId     = req.body.websiteId;
         var myFile        =  req.file;
 
-        //var originalname  = myFile.originalname; // file name on user's computer
-        var filename      = myFile.filename;     // new file name in upload folder
-       // var path          = myFile.path;         // full path of uploaded file
-        // var destination   = myFile.destination;  // folder where file is saved to
-        //var size          = myFile.size;
-        //var mimetype      = myFile.mimetype;
+
+        var filename      = myFile.filename;     // file name in upload folder
         var serverPath = "../../../../../uploads/"+filename;
 
 
