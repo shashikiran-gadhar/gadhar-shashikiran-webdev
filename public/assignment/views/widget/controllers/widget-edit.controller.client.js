@@ -29,7 +29,8 @@
             WidgetService
                 .updateWidget(vm.widgetID, widget)
                 .success(function () {
-                    $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page/" + vm.pageID + "/widget");
+                    $location.url("/user/" + vm.userID + "/website/" + vm.websiteID +
+                        "/page/" + vm.pageID + "/widget");
                 })
         }
 
@@ -37,7 +38,8 @@
             WidgetService
                 .deleteWidget(vm.widgetID)
                 .success(function () {
-                    $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page/" + vm.pageID + "/widget");
+                    $location.url("/user/" + vm.userID + "/website/" + vm.websiteID +
+                        "/page/" + vm.pageID + "/widget");
                 })
         }
 

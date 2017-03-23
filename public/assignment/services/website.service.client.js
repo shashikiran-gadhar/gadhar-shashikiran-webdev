@@ -5,7 +5,7 @@
 
     function websiteService($http) {
 
-        var api ={
+        var api = {
             "createWebsite" : createWebsite,
             "findWebsitesByUser" : findWebsitesByUser,
             "findWebsiteById" : findWebsiteById,

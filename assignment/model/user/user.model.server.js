@@ -125,7 +125,7 @@ module.exports = function (mongoose, q) {
                 user.save();
                 deferred.resolve();
             }
-        })
+        });
         return deferred.promise;
     }
 

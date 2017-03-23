@@ -36,7 +36,7 @@
 
 
         function init() {
-             PageService
+            PageService
                     .findPageById(vm.pageID)
                     .success(function (page) {
                         vm.page = page;

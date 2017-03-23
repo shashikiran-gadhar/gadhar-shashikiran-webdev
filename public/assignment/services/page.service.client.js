@@ -5,7 +5,7 @@
 
     function pageService($http) {
 
-        var api ={
+        var api = {
             "createPage" : createPage,
             "findPageByWebsiteId" : findPageByWebsiteId,
             "findPageById" : findPageById,

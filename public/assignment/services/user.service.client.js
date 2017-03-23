@@ -5,7 +5,7 @@
 
     function userService($http) {
 
-        var api ={
+        var api = {
             "createUser" : createUser,
             "findUserById" : findUserById,
             "findUserByUsername" : findUserByUsername,

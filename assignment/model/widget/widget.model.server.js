@@ -119,7 +119,7 @@ module.exports = function (mongoose, q) {
         WidgetModel.update(
             { _id : widgetId },
             {
-                url: url,
+                url: url
             }, function (err, user) {
                 if(err){
                     deferred.reject(err);
@@ -127,7 +127,7 @@ module.exports = function (mongoose, q) {
                 else {
                     deferred.resolve(user);
                 }
-            })
+            });
         return deferred.promise;
     }
 

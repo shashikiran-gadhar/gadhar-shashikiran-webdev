@@ -31,7 +31,8 @@
             WidgetService
                 .updateWidgetFlickr(vm.widgetID, url)
                 .then(function (res) {
-                    $location.url("/user/" + vm.userID + "/website/" + vm.websiteID + "/page/" + vm.pageID + "/widget/"+vm.widgetID);
+                    $location.url("/user/" + vm.userID + "/website/" + vm.websiteID +
+                        "/page/" + vm.pageID + "/widget/"+vm.widgetID);
                 });
         }
     }

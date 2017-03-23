@@ -72,7 +72,7 @@ module.exports = function (app, widgetModel) {
         var userId        = req.body.userId;
         var pageId        = req.body.pageId;
         var websiteId     = req.body.websiteId;
-        var myFile        =  req.file;
+        var myFile        = req.file;
 
 
         var filename      = myFile.filename;     // file name in upload folder
