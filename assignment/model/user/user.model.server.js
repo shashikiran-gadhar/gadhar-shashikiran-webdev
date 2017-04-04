@@ -2,7 +2,7 @@ module.exports = function (mongoose, q) {
 
     var UserSchema = require('./user.schema.server')(mongoose);
     var UserModel = mongoose.model('UserModel', UserSchema);
-
+    var bcrypt = require("bcrypt-nodejs");
 
     UserModel.createUser = createUser;
     UserModel.findUserById = findUserById;
