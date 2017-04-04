@@ -49,14 +49,12 @@ module.exports = function (app, userModel) {
             .findUserByUsername(username)
             .then(
                 function(user) {
-
                     if (!user)
                     {
                         return done(null, false);
                     }
-                    if(user && bcrypt.compareSync(password, user.password))
+                    if(user[0] && bcrypt.compareSync(password, user[0].password))
                     {
-                        console.log("gjgjjg" + user);
                         return done(null, user);
                     }
 
@@ -152,11 +150,11 @@ module.exports = function (app, userModel) {
 
 
     function loggedin(req, res) {
-        if(req.isAuthenticated()){
-            res.send(req.user);
-        }
-        res.send('0');
-        //res.send(req.isAuthenticated() ? req.user : '0');
+        // if(req.isAuthenticated()){
+        //     res.send(req.user);
+        // }
+        // res.send('0');
+        res.send(req.isAuthenticated() ? req.user : '0');
     }
 
     function createUser(req, res) {

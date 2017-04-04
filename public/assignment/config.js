@@ -27,8 +27,8 @@
             .when("/user/:uid",{
                 templateUrl: "views/user/templates/profile.view.client.html",
                 controller: "ProfileController",
-                controllerAs: "model"
-                //resolve: { loggedin: checkLoggedin }
+                controllerAs: "model",
+                resolve: { loggedin: checkLoggedin }
             })
             .when("/user/:uid/website",{
                 templateUrl: "views/website/templates/website-list.view.client.html",
@@ -85,12 +85,11 @@
             });
     }
 
-    var checkLoggedin = function($q, $timeout, $http, $location, $rootScope, UserService) {
+    var checkLoggedin = function($q, $timeout, $http, $location, $rootScope) {
         var deferred = $q.defer();
 
-        UserService
-            .checkLoggedin()
-            .success(function(user) {
+        $http.get('/api/loggedin')
+            .then(function(user) {
             $rootScope.errorMessage = null;
             if (user !== '0') {
                 $rootScope.currentUser = user;
