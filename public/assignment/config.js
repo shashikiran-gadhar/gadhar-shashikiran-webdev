@@ -28,6 +28,7 @@
                 templateUrl: "views/user/templates/profile.view.client.html",
                 controller: "ProfileController",
                 controllerAs: "model"
+                //resolve: { loggedin: checkLoggedin }
             })
             .when("/user/:uid/website",{
                 templateUrl: "views/website/templates/website-list.view.client.html",
@@ -83,5 +84,23 @@
                 redirectTo: "/login"
             });
     }
+
+    var checkLoggedin = function($q, $timeout, $http, $location, $rootScope, UserService) {
+        var deferred = $q.defer();
+
+        UserService
+            .checkLoggedin()
+            .success(function(user) {
+            $rootScope.errorMessage = null;
+            if (user !== '0') {
+                $rootScope.currentUser = user;
+                deferred.resolve();
+            } else {
+                deferred.reject();
+                $location.url('/');
+            }
+        });
+        return deferred.promise;
+    };
 
 })();

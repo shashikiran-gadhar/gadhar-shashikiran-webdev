@@ -14,20 +14,21 @@
         init();
 
         function login(user) {
-            var promise = UserService.login(user);
+            UserService
+                .login(user)
+                .then(function (response) {
+                    if(response){
+                        user = response.data;
+                        if(user[0]){
+                            $rootScope.currentUser = user[0];
+                            $location.url("/user/" + user[0]._id);
+                        }
+                        else{
+                            vm.error = "User not found";
+                        }
+                    }
 
-            promise.success(function (user) {
-                user = user.data;
-                if(user[0]){
-                    $rootScope.currentUser = user;
-                    console.log(user);
-                    $location.url("/user/" + user[0]._id);
-                }
-                else{
-                    vm.error = "User not found";
-                }
-           });
-
+                });
         }
     }
 

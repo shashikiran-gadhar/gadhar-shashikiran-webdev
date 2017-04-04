@@ -8,7 +8,11 @@ module.exports = function (mongoose) {
         email: String,
         phone: String,
         websites: [{type:mongoose.Schema.Types.ObjectId, ref: 'WebsiteModel'}],
-        dateCreated: { type: Date, default: Date.now }
+        dateCreated: { type: Date, default: Date.now },
+        facebook: {
+            id:    String,
+            token: String
+        }
     }, {collection: 'assignmentDB.user'});
 
     UserSchema.post('remove', function () {

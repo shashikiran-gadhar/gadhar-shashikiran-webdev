@@ -4,7 +4,7 @@
         .module("WebAppMaker")
         .controller("RegisterController", RegisterController);
 
-    function RegisterController($location, UserService) {
+    function RegisterController($location, UserService, $rootScope) {
         var vm = this;
 
         //Event Handlers
@@ -22,14 +22,16 @@
                 })
                 .error(function () {
                     UserService
-                        .createUser(user)
-                        .success(function (newUser) {
-                            $location.url("/user/" + newUser._id);
-                        })
+                        .register(user)
+                        .then(function(response) {
+                                var user = response.data;
+                                $rootScope.currentUser = user;
+                                $location.url("/user/"+user._id);
+                            })
                         .error(function () {
                             vm.error = "User Registration Failed";
                         })
-                })
+                });
         }
 
 

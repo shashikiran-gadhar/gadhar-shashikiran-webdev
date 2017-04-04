@@ -5,7 +5,7 @@ var passport = require('passport');
 var app = express();
 
 app.use(session({
-    secret: 'this is the not a secret',
+    secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: true
 }));
