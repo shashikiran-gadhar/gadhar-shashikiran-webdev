@@ -21,14 +21,16 @@
         init();
         
         function createWebsite(website) {
-            WebsiteService
-                .createWebsite(vm.userID, website)
-                .success(function (newWebsite) {
-                    UserService.addWebsite(vm.userID, newWebsite._id)
-                        .success(function () {
-                            $location.url("/user/" + vm.userID + "/website");
-                        });
-                });
+            if(website && website.name){
+                WebsiteService
+                    .createWebsite(vm.userID, website)
+                    .success(function (newWebsite) {
+                        UserService.addWebsite(vm.userID, newWebsite._id)
+                            .success(function () {
+                                $location.url("/user/" + vm.userID + "/website");
+                            });
+                    });
+            }
         }
 
     }

@@ -1,6 +1,7 @@
 
 <div class="container-fluid">
     <h1>Login</h1>
+
     <div ng-show="loginform.$invalid && loginform.$submitted" class="alert alert-danger">
         Please fix below errors
         <ul>
@@ -8,11 +9,13 @@
             <li ng-show="loginform.password.$invalid && loginform.$submitted">Password is required</li>
         </ul>
     </div>
+
     <form name="loginform" novalidate>
         <input class="form-control"
                name="username"
                ng-model="user.username"
                placeholder="username" required/>
+
         <div class="error" ng-show="loginform.username.$invalid && loginform.$submitted">
             <li>Username is required</li>
         </div>

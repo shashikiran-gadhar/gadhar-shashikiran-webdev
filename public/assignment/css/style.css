@@ -55,3 +55,7 @@ a:hover{text-decoration: none;}
 .ng-submitted .ng-invalid{
     background-color : #ebebeb;
 }
+
+form{
+    padding-bottom: 5px;
+}

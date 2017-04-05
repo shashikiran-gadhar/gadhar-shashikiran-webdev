@@ -15,25 +15,31 @@
         init();
 
         function register(user) {
-            UserService
-                .findUserByUsername(user.username)
-                .success(function (user) {
-                    vm.error = "Username already taken";
-                })
-                .error(function () {
+            if (user && user.username && user.password && user.password2) {
+                if (user.password === user.password2) {
                     UserService
-                        .register(user)
-                        .then(function(response) {
-                                var user = response.data;
-                                $rootScope.currentUser = user;
-                                $location.url("/user/"+user._id);
-                            })
-                        .error(function () {
-                            vm.error = "User Registration Failed";
+                        .findUserByUsername(user.username)
+                        .success(function (user) {
+                            vm.error = "Username already taken";
                         })
-                });
+                        .error(function () {
+                            UserService
+                                .register(user)
+                                .then(function (response) {
+                                    var user = response.data;
+                                    $rootScope.currentUser = user;
+                                    $location.url("/user/" + user._id);
+                                })
+                                .error(function () {
+                                    vm.error = "User Registration Failed";
+                                })
+                        });
+                }
+                else {
+                    vm.passworderror = "Password and Verify password must match"
+                }
+            }
         }
-
 
     }
 })();
