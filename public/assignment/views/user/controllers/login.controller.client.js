@@ -20,8 +20,8 @@
                     if(response){
                         user = response.data;
                         if(user[0]){
-                            $rootScope.currentUser = user[0];
-                            $location.url("/user/" + user[0]._id);
+                            //$rootScope.currentUser = user[0];
+                            $location.url("/user/" + user[0]._id, user);
                         }
                         else{
                             vm.error = "User not found";

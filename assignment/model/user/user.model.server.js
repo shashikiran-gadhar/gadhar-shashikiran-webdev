@@ -131,7 +131,6 @@ module.exports = function (mongoose, q) {
     }
 
     function findUserByFacebookId(facebookId) {
-        //return User.findOne({'facebook.id': facebookId});
         var deferred = q.defer();
 
         UserModel.findOne({'facebook.id': facebookId}, function (err, user) {

@@ -9,14 +9,14 @@ module.exports = function (app, userModel) {
         callbackURL  : process.env.FACEBOOK_CALLBACK_URL,
         profileFields: ['id', 'displayName', 'name', 'email']
     };
+
     var passport = require('passport');
     var auth = authorized;
     var LocalStrategy = require('passport-local').Strategy;
     var FacebookStrategy = require('passport-facebook').Strategy;
+
     passport.use(new LocalStrategy(localStrategy));
     passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
-    passport.serializeUser(serializeUser);
-    passport.deserializeUser(deserializeUser);
 
     app.post('/api/login', passport.authenticate('local'), login);
     app.post('/api/logout', logout);
@@ -39,7 +39,7 @@ module.exports = function (app, userModel) {
     function authorized (req, res, next) {
         if (!req.isAuthenticated()) {
             res.send(401);
-        } else {
+        }else {
             next();
         }
     }
@@ -103,21 +103,39 @@ module.exports = function (app, userModel) {
             );
     }
 
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
+
     function serializeUser(user, done) {
         done(null, user);
     }
 
     function deserializeUser(user, done) {
-        userModel
-            .findUserById(user._id)
-            .then(
-                function(user){
-                    done(null, user);
-                },
-                function(err){
-                    done(err, null);
-                }
-            );
+        if(user[0]){
+            userModel
+                .findUserById(user[0]._id)
+                .then(
+                    function(user){
+                        done(null, user);
+                    },
+                    function(err){
+                        done(err, null);
+                    }
+                );
+        }
+        else
+        {
+            userModel
+                .findUserById(user._id)
+                .then(
+                    function(user){
+                        done(null, user);
+                    },
+                    function(err){
+                        done(err, null);
+                    }
+                );
+        }
     }
 
     function login(req, res) {
@@ -150,10 +168,6 @@ module.exports = function (app, userModel) {
 
 
     function loggedin(req, res) {
-        // if(req.isAuthenticated()){
-        //     res.send(req.user);
-        // }
-        // res.send('0');
         res.send(req.isAuthenticated() ? req.user : '0');
     }
 
