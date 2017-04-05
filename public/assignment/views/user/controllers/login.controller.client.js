@@ -15,7 +15,7 @@
 
         function login(user) {
             UserService
-                .login(user)
+                .login(user.username, user.password)
                 .then(function (response) {
                     if(response){
                         user = response.data;
@@ -28,7 +28,10 @@
                         }
                     }
 
-                });
+                })
+                .catch(function (err) {
+                    vm.error = "User not found";
+                })
         }
     }
 

@@ -16,7 +16,6 @@
             "login" : login,
             "logout" : logout,
             "register" : register
-            //"checkLoggedin" : checkLoggedin
         };
         return api;
 
@@ -32,10 +31,6 @@
             return $http.post("/api/register", user);
         }
 
-        // function checkLoggedin() {
-        //     return $http.get('/api/loggedin');
-        // }
-        
         function createUser(user) {
             return $http.post("/api/user", user);
         }
