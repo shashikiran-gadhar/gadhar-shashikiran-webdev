@@ -89,6 +89,7 @@
         var deferred = $q.defer();
 
         $http.get('/api/loggedin').then(function(user) {
+            console.log(user);
             $rootScope.errorMessage = null;
             user = user.data;
             if (user !== '0') {
