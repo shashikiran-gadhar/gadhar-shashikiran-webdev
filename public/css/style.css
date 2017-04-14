@@ -1,128 +1,1 @@
-#profile-img {
-	width: 256px;
-	height: 256px;
-	border-radius: 100%;
-}
-
-span.icon {
-    background: #22A39F;
-    position: absolute;
-    top: 0px;
-    right: 15px;
-    width: 48px;
-    height: 48px;
-}
-
-span.icon span {
-    font-size: 18px;
-    line-height: 18px;
-    padding: 15px;
-    color: #fff;
-}
-
-.glyphicon {
-    position: relative;
-    top: 1px;
-    display: inline-block;
-    font-family: 'Glyphicons Halflings';
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-
-
-
-ul.no-bullets {
-    list-style-type: none;
-    margin: 0px;
-    padding: 0px;
-}
-
-ul.no-bullets li {
-    min-height: 30px;
-    padding: 3px 0px;
-}
-
-ul.no-bullets li .ability-score .glyphicon {
-    color: #DFE0E0;
-    color: rgba(0,0,0,.25);
-    font-size: 18px;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-}
-
-ul.no-bullets li span.ability-title {
-    display: inline-block;
-    width: 60%;
-    font-size: 18px;
-}
-
-ul.no-bullets li span.ability-score {
-    float: right;
-    font-size: 16px;
-}
-
-ul.no-bullets li .ability-score .glyphicon.filled {
-    color: #22A39F;
-    color: #fff;
-}
-
-.glyphicon-star:before {
-    content: "\e006";
-}
-
-img.img-responsive.center {
-	display: block;
-    margin: 0 auto;
-}
-
-ul.role li {
-    list-style-type: none;
-    font-size: 15px;
-}
-
-ul.role li:before {
-    font-family: 'FontAwesome';
-    content: '\f005';
-    margin: 0 5px 0 -20px;
-}
-
-section#achievemnts, section#aprojects {
-    padding-top: 0px;
-}
-
-hr.star-light.contact:after {
-	background-color: #2C3E50!important;
-	color: #fff!important;
-}
-
-ul.list-inline li a i.fa.fa-envelope-o.e-mail, ul.list-inline li a i.fa.fa-mobile.mobile, ul.list-inline li a i.fa.fa-linkedin.linkedin {
-	font-size: 72px;
-	color: #fff;
-}
-
-ul.list-inline a {
-	text-decoration: none;
-	color: #fff;
-}
-
-ul.list-inline a p {
-	font-size: 16px;
-}
-
-header .intro-text .name {
-	font-size: 3.5em;
-}
-
-span.skills.info {
-    font-size: 1.50em;
-}
-
-header .container {
-    padding-top: 150px;
-}
+#profile-img {	width: 256px;	height: 256px;	border-radius: 100%;}.giticon{    font-size: 40px;}span.icon {    background: #22A39F;    position: absolute;    top: 0px;    right: 15px;    width: 48px;    height: 48px;}span.icon span {    font-size: 18px;    line-height: 18px;    padding: 15px;    color: #fff;}.glyphicon {    position: relative;    top: 1px;    display: inline-block;    font-family: 'Glyphicons Halflings';    font-style: normal;    font-weight: 400;    line-height: 1;    -webkit-font-smoothing: antialiased;    -moz-osx-font-smoothing: grayscale;}ul.no-bullets {    list-style-type: none;    margin: 0px;    padding: 0px;}ul.no-bullets li {    min-height: 30px;    padding: 3px 0px;}ul.no-bullets li .ability-score .glyphicon {    color: #DFE0E0;    color: rgba(0,0,0,.25);    font-size: 18px;    -webkit-transition: all 0.3s;    -moz-transition: all 0.3s;    -o-transition: all 0.3s;    transition: all 0.3s;}ul.no-bullets li span.ability-title {    display: inline-block;    width: 60%;    font-size: 18px;}ul.no-bullets li span.ability-score {    float: right;    font-size: 16px;}ul.no-bullets li .ability-score .glyphicon.filled {    color: #22A39F;    color: #fff;}.glyphicon-star:before {    content: "\e006";}img.img-responsive.center {	display: block;    margin: 0 auto;}ul.role li {    list-style-type: none;    font-size: 15px;}ul.role li:before {    font-family: 'FontAwesome';    content: '\f005';    margin: 0 5px 0 -20px;}section#achievemnts, section#aprojects {    padding-top: 0px;}hr.star-light.contact:after {	background-color: #2C3E50!important;	color: #fff!important;}ul.list-inline li a i.fa.fa-envelope-o.e-mail, ul.list-inline li a i.fa.fa-mobile.mobile, ul.list-inline li a i.fa.fa-linkedin.linkedin {	font-size: 72px;	color: #fff;}ul.list-inline a {	text-decoration: none;	color: #fff;}ul.list-inline a p {	font-size: 16px;}header .intro-text .name {	font-size: 3.5em;}span.skills.info {    font-size: 1.50em;}header .container {    padding-top: 150px;}
